@@ -196,10 +196,8 @@ def _aeroflot_process(browser, dest, url):
                 price = elt.find_element(By.CLASS_NAME, 'flight-search__price-text')
             except:
                 price = elt.find_element(By.XPATH, '//div[@class="h-display--inline h-text--nowrap"]')
-            print(price.text[:-1] + 'рублей')
-            print(time_.text)
-            text.insert(END, price.text[:-1] + 'рублей\n')
-            text.insert(END, time_.text + '\n')
+            print(price.text[:-1] + 'рублей за ' + time_.text)
+            text.insert(END, price.text[:-1] + 'рублей за ' + time_.text + '\n')
         text.configure(state='disabled')
     else:
         print(elements[0].text)
