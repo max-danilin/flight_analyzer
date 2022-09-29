@@ -151,8 +151,8 @@ def check_aeroflot(dests, date):
     options.headless = True
     browser = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     windows_amount = 1
-    for i in range(4):
-        print(f'------ПОПЫТКА НОМЕР {i+1}------')
+    for i in range(10):
+        # print(f'------ПОПЫТКА НОМЕР {i+1}------')
         text.configure(state='normal')
         text.insert(END, f'------ПОПЫТКА НОМЕР {i+1}------\n')
         text.configure(state='disabled')
@@ -165,7 +165,7 @@ def check_aeroflot(dests, date):
                 windows_amount = 1
 
             _aeroflot_process(browser, dest, url)
-            print('-----------')
+            # print('-----------')
             text.configure(state='normal')
             text.insert(END, '------------\n')
             text.configure(state='disabled')
@@ -184,8 +184,8 @@ def _aeroflot_process(browser, dest, url):
                                                                  or lmd.find_elements(By.XPATH,
                                                                                       '//div[@class="flight-search"]'))
     if elements[0].get_attribute('class') == 'flight-search':
-        print(f'Что-то нашли в {dest}!')
-        print(f'{len(elements)} вариантов найдено по {url}!')
+        # print(f'Что-то нашли в {dest}!')
+        # print(f'{len(elements)} вариантов найдено по {url}!')
         text.configure(state='normal')
         text.insert(END, f'Что-то нашли в {dest}!\n')
         text.insert(END, f'{len(elements)} вариантов найдено по ')
@@ -196,11 +196,11 @@ def _aeroflot_process(browser, dest, url):
                 price = elt.find_element(By.CLASS_NAME, 'flight-search__price-text')
             except:
                 price = elt.find_element(By.XPATH, '//div[@class="h-display--inline h-text--nowrap"]')
-            print(price.text[:-1] + 'рублей за ' + time_.text)
+            # print(price.text[:-1] + 'рублей за ' + time_.text)
             text.insert(END, price.text[:-1] + 'рублей за ' + time_.text + '\n')
         text.configure(state='disabled')
     else:
-        print(elements[0].text)
+        # print(elements[0].text)
         text.configure(state='normal')
         text.insert(END, elements[0].text + '\n')
         text.configure(state='disabled')
