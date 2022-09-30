@@ -57,6 +57,7 @@ cal.place(relx=0.3, rely=0)
 
 
 class DateGetter:
+    """Class for getting and saving date"""
     chosen_date = None
 
     @staticmethod
