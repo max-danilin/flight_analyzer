@@ -82,6 +82,7 @@ destinations.place(relx=0.4, rely=0)
 
 
 class DestGetter:
+    """Class for getting and saving destination"""
     chosen_dest = []
     buttons = {}
 
